@@ -1,22 +1,28 @@
-export function Recipe(props) {
-    const { recipe } = props;
+import React from 'react'
+import { Typography, Box} from '@mui/material'
+
+export function Recipe({ recipe }) {
     if (!recipe) return null;
     
     return (
-        <section className="recipe">
-
-            <h1>{props.recipe.name}</h1>
-
-            <h2>Ingredients</h2>
-            <ul>
-                {props.recipe.ingredients.map((text, i) => <li key={i}>{text}</li>)}
-            </ul>
-
-            <h2>Instructions</h2>
-            <ol>
-                {props.recipe.instructions.map((text, i) => <li key={i}>{text}</li>)}
-            </ol>
-            
-        </section>
-    );
+        <Box sx={{ p: 2, m: 2, maxWidth: 600, mx: 'auto' }}>
+          <Typography variant="h4" gutterBottom>
+            {recipe.name}
+          </Typography>
+    
+          <Typography variant="subtitle1">Ingredients</Typography>
+          <ul>
+            {recipe.ingredients.map((ing, idx) => (
+              <li key={idx}>{ing}</li>
+            ))}
+          </ul>
+    
+          <Typography variant="subtitle1">Instructions</Typography>
+          <ol>
+            {recipe.instructions.map((step, idx) => (
+              <li key={idx}>{step}</li>
+            ))}
+          </ol>
+        </Box>
+      )
 }
